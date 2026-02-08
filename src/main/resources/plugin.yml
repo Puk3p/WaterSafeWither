@@ -1,0 +1,6 @@
+name: WaterSafeWither
+version: '1.0'
+main: ro.puk3p.waterSafeWither.WaterSafeWither
+api-version: '1.18'
+authors: [ Puk3p ]
+description: Limiter ip

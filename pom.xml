@@ -14,15 +14,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- IMPORTANT: 1.8.x server => Java 8 bytecode -->
         <java.version>1.8</java.version>
 
-        <!-- Kotlin: recomand 1.9.x pentru compat maxim pe Java 8.
-             Dacă vrei neapărat 2.x, trebuie să te asiguri că merge cu target 1.8. -->
         <kotlin.version>1.9.25</kotlin.version>
     </properties>
 
-    <!-- Repos pentru Spigot API -->
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -51,7 +47,6 @@
         </dependency>
 
 
-        <!-- Kotlin stdlib trebuie inclusă în jar (shade) -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
@@ -101,7 +96,6 @@
                 </executions>
             </plugin>
 
-            <!-- Shade: include Kotlin runtime în jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -116,7 +110,6 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <minimizeJar>false</minimizeJar>
 
-                            <!-- recomandat: evită conflicte de Kotlin între pluginuri -->
                             <relocations>
                                 <relocation>
                                     <pattern>kotlin</pattern>

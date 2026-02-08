@@ -3,4 +3,14 @@ version: '1.0'
 main: ro.puk3p.waterSafeWither.WaterSafeWither
 authors: [ Puk3p ]
 description: Prevents wither from breaking water and prevents water from flowing after explosions.
+commands:
+  wswreload:
+    description: Reload WaterSafeWither config
+    usage: /wswreload
+    permission: watersafewither.reload
+
+permissions:
+  watersafewither.reload:
+    description: Allows reloading WaterSafeWither config
+    default: op
 

@@ -1,0 +1,8 @@
+features:
+  prevent-water-break: true
+  prevent-water-flow: true
+  drop-spawners: true
+  spawner-float-up: true
+
+tuning:
+  spawner-float-velocity-y: 0.35

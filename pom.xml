@@ -31,7 +31,6 @@
     </repositories>
 
     <dependencies>
-        <!-- Serverul furnizează Spigot la runtime -->
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>

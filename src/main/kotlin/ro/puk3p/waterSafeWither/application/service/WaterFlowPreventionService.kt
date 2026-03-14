@@ -1,6 +1,7 @@
 package ro.puk3p.waterSafeWither.application.service
 
 import org.bukkit.block.Block
+import org.bukkit.entity.EntityType
 import ro.puk3p.waterSafeWither.core.config.PluginConfig
 import ro.puk3p.waterSafeWither.domain.policy.WaterBlockPolicy
 import ro.puk3p.waterSafeWither.util.wswLogger
@@ -15,13 +16,19 @@ class WaterFlowPreventionService(
 
     fun shouldCancelFlow(from: Block): Boolean {
         if (!config.preventWaterFlow) {
-            wswLogger.info("[FlowService] preventWaterFlow is disabled, allowing flow")
             return false
         }
-        val isWater = waterPolicy.isWater(from)
-        if (isWater) {
-            wswLogger.info("[FlowService] Water flow detected from ${from.type} at ${from.x},${from.y},${from.z}, cancelling")
+        if (!waterPolicy.isWater(from)) {
+            return false
         }
-        return isWater
+
+        val radius = config.witherFlowRadius
+        val nearby = from.world.getNearbyEntities(from.location, radius, radius, radius)
+        val witherNearby = nearby.any { it.type == EntityType.WITHER }
+
+        if (witherNearby) {
+            wswLogger.info("[FlowService] Water flow cancelled near Wither at ${from.x},${from.y},${from.z}")
+        }
+        return witherNearby
     }
 }

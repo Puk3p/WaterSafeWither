@@ -8,7 +8,8 @@ data class PluginConfig(
     val preventWaterFlow: Boolean,
     val dropSpawners: Boolean,
     val spawnerFloatUp: Boolean,
-    val floatVelocityY: Double
+    val floatVelocityY: Double,
+    val witherFlowRadius: Double
 ) {
     companion object {
         fun load(plugin: Plugin): PluginConfig {
@@ -21,7 +22,8 @@ data class PluginConfig(
                 preventWaterFlow = c.getBoolean("features.prevent-water-flow", true),
                 dropSpawners = c.getBoolean("features.drop-spawners", true),
                 spawnerFloatUp = c.getBoolean("features.spawner-float-up", true),
-                floatVelocityY = c.getDouble("tuning.spawner-float-velocity-y", 0.35)
+                floatVelocityY = c.getDouble("tuning.spawner-float-velocity-y", 0.35),
+                witherFlowRadius = c.getDouble("tuning.wither-flow-radius", 20.0)
             )
         }
     }

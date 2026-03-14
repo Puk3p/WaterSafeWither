@@ -6,3 +6,4 @@ features:
 
 tuning:
   spawner-float-velocity-y: 0.35
+  wither-flow-radius: 20.0

@@ -1,10 +1,9 @@
 package ro.puk3p.waterSafeWither.application.service
 
 import org.bukkit.block.Block
-import org.bukkit.entity.EntityType
+import org.bukkit.entity.Wither
 import ro.puk3p.waterSafeWither.core.config.PluginConfig
 import ro.puk3p.waterSafeWither.domain.policy.WaterBlockPolicy
-import ro.puk3p.waterSafeWither.util.wswLogger
 
 class WaterFlowPreventionService(
     private var config: PluginConfig,
@@ -23,12 +22,9 @@ class WaterFlowPreventionService(
         }
 
         val radius = config.witherFlowRadius
-        val nearby = from.world.getNearbyEntities(from.location, radius, radius, radius)
-        val witherNearby = nearby.any { it.type == EntityType.WITHER }
-
-        if (witherNearby) {
-            wswLogger.info("[FlowService] Water flow cancelled near Wither at ${from.x},${from.y},${from.z}")
-        }
-        return witherNearby
+        val radiusSq = radius * radius
+        val loc = from.location
+        val withers = from.world.getEntitiesByClass(Wither::class.java)
+        return withers.any { it.location.distanceSquared(loc) <= radiusSq }
     }
 }

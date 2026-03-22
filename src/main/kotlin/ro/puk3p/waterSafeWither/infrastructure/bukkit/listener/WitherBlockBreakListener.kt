@@ -4,7 +4,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityChangeBlockEvent
 import ro.puk3p.waterSafeWither.application.service.WitherBlockBreakService
-import ro.puk3p.waterSafeWither.util.wswLogger
 
 class WitherBlockBreakListener(
     private val service: WitherBlockBreakService
@@ -15,11 +14,8 @@ class WitherBlockBreakListener(
         val entity = event.entity ?: return
         val block = event.block
 
-        wswLogger.info("[BlockBreak] EntityChangeBlockEvent fired: entity=${entity.type.name}, block=${block.type} at ${block.x},${block.y},${block.z}")
-
         if (service.handleBlockBreak(entity.type.name, block)) {
             event.isCancelled = true
-            wswLogger.info("[BlockBreak] Event cancelled for ${block.type} at ${block.x},${block.y},${block.z}")
         }
     }
 }

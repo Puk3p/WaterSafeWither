@@ -29,7 +29,7 @@ class PluginBootstrap(private val plugin: Plugin) {
         val waterPolicy = DefaultWaterBlockPolicy(materials)
 
         spawnerDropService = SpawnerDropService(config, materials)
-        witherBlockBreakService = WitherBlockBreakService(config, waterPolicy)
+        witherBlockBreakService = WitherBlockBreakService(config, waterPolicy, materials, spawnerDropService)
         witherExplosionService = WitherExplosionService(config, waterPolicy, materials, spawnerDropService)
         waterFlowService = WaterFlowPreventionService(config, waterPolicy)
 

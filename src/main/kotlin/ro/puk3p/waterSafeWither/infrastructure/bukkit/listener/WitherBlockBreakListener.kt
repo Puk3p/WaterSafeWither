@@ -17,9 +17,9 @@ class WitherBlockBreakListener(
 
         wswLogger.info("[BlockBreak] EntityChangeBlockEvent fired: entity=${entity.type.name}, block=${block.type} at ${block.x},${block.y},${block.z}")
 
-        if (service.shouldCancelBlockBreak(entity.type.name, block)) {
+        if (service.handleBlockBreak(entity.type.name, block)) {
             event.isCancelled = true
-            wswLogger.info("[BlockBreak] Cancelled Wither body breaking water at ${block.x},${block.y},${block.z}")
+            wswLogger.info("[BlockBreak] Event cancelled for ${block.type} at ${block.x},${block.y},${block.z}")
         }
     }
 }

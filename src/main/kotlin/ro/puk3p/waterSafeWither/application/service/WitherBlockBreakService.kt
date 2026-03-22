@@ -3,27 +3,35 @@ package ro.puk3p.waterSafeWither.application.service
 import org.bukkit.block.Block
 import ro.puk3p.waterSafeWither.core.config.PluginConfig
 import ro.puk3p.waterSafeWither.domain.policy.WaterBlockPolicy
+import ro.puk3p.waterSafeWither.infrastructure.bukkit.adapter.BukkitMaterialAdapter
 import ro.puk3p.waterSafeWither.util.wswLogger
 
 class WitherBlockBreakService(
     private var config: PluginConfig,
-    private val waterPolicy: WaterBlockPolicy
+    private val waterPolicy: WaterBlockPolicy,
+    private val materials: BukkitMaterialAdapter,
+    private val spawnerDropService: SpawnerDropService
 ) {
     fun updateConfig(newConfig: PluginConfig) {
         config = newConfig
     }
 
-    fun shouldCancelBlockBreak(entityTypeName: String, block: Block): Boolean {
-        if (!config.preventWaterBreak) {
-            wswLogger.info("[BlockBreakService] preventWaterBreak is disabled, allowing break")
-            return false
-        }
+    fun handleBlockBreak(entityTypeName: String, block: Block): Boolean {
         if (entityTypeName != "WITHER") {
-            wswLogger.info("[BlockBreakService] Entity is $entityTypeName, not WITHER, skipping")
             return false
         }
-        val isWater = waterPolicy.isWater(block)
-        wswLogger.info("[BlockBreakService] Block ${block.type} at ${block.x},${block.y},${block.z} isWater=$isWater")
-        return isWater
+
+        if (config.preventWaterBreak && waterPolicy.isWater(block)) {
+            wswLogger.info("[BlockBreakService] Cancelled Wither body breaking water ${block.type} at ${block.x},${block.y},${block.z}")
+            return true
+        }
+
+        if (config.dropSpawners && materials.isSpawner(block)) {
+            wswLogger.info("[BlockBreakService] Wither body broke spawner at ${block.x},${block.y},${block.z}, handling drop")
+            spawnerDropService.handleSpawnerBreak(block)
+            return true
+        }
+
+        return false
     }
 }

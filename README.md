@@ -65,4 +65,4 @@ The output JAR will be in `target/WaterSafeWither-<version>.jar`.
 
 ## License
 
-All rights reserved.
+[MIT](LICENSE)

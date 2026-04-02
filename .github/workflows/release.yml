@@ -83,7 +83,7 @@ jobs:
       - name: "Step 6: Upload JAR to Discord"
         run: |
           JAR_FILE=$(ls target/WaterSafeWither-*.jar | head -n 1)
-          WEBHOOK="${{ secrets.URL_WEBHOOK_OPERATOR }}?thread_id=1489307346642403541"
+          WEBHOOK="${{ secrets.URL_WEBHOOK_OPERATOR }}?thread_id=1489410922706505871"
           
           curl -X POST \
                -F "file=@$JAR_FILE" \

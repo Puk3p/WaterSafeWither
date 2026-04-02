@@ -5,7 +5,6 @@ import ro.puk3p.waterSafeWither.core.bootstrap.PluginBootstrap
 import ro.puk3p.waterSafeWither.infrastructure.bukkit.command.WswReloadCommand
 
 class WaterSafeWither : JavaPlugin() {
-
     private lateinit var bootstrap: PluginBootstrap
 
     override fun onEnable() {

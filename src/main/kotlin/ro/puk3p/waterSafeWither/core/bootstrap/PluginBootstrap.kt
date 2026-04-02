@@ -14,7 +14,6 @@ import ro.puk3p.waterSafeWither.infrastructure.bukkit.listener.WitherExplodeList
 import ro.puk3p.waterSafeWither.util.logInfo
 
 class PluginBootstrap(private val plugin: Plugin) {
-
     private lateinit var config: PluginConfig
 
     private lateinit var spawnerDropService: SpawnerDropService
@@ -38,7 +37,12 @@ class PluginBootstrap(private val plugin: Plugin) {
         pm.registerEvents(WitherExplodeListener(witherExplosionService), plugin)
         pm.registerEvents(WaterFlowListener(waterFlowService), plugin)
 
-        plugin.logInfo("Started. preventWaterBreak=${config.preventWaterBreak}, preventWaterFlow=${config.preventWaterFlow}, dropSpawners=${config.dropSpawners}, spawnerFloatUp=${config.spawnerFloatUp}")
+        plugin.logInfo(
+            "Started. preventWaterBreak=${config.preventWaterBreak}, " +
+                "preventWaterFlow=${config.preventWaterFlow}, " +
+                "dropSpawners=${config.dropSpawners}, " +
+                "spawnerFloatUp=${config.spawnerFloatUp}",
+        )
     }
 
     fun reload() {
@@ -50,6 +54,11 @@ class PluginBootstrap(private val plugin: Plugin) {
         witherExplosionService.updateConfig(newConfig)
         waterFlowService.updateConfig(newConfig)
 
-        plugin.logInfo("Reloaded config. preventWaterBreak=${newConfig.preventWaterBreak}, preventWaterFlow=${newConfig.preventWaterFlow}, dropSpawners=${newConfig.dropSpawners}, spawnerFloatUp=${newConfig.spawnerFloatUp}")
+        plugin.logInfo(
+            "Reloaded config. preventWaterBreak=${newConfig.preventWaterBreak}, " +
+                "preventWaterFlow=${newConfig.preventWaterFlow}, " +
+                "dropSpawners=${newConfig.dropSpawners}, " +
+                "spawnerFloatUp=${newConfig.spawnerFloatUp}",
+        )
     }
 }

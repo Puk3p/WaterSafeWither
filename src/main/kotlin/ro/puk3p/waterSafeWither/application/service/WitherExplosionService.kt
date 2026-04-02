@@ -9,13 +9,16 @@ class WitherExplosionService(
     private var config: PluginConfig,
     private val waterPolicy: WaterBlockPolicy,
     private val materials: BukkitMaterialAdapter,
-    private val spawnerDropService: SpawnerDropService
+    private val spawnerDropService: SpawnerDropService,
 ) {
     fun updateConfig(newConfig: PluginConfig) {
         config = newConfig
     }
 
-    fun handleWitherExplosion(entityTypeName: String, blocks: MutableList<Block>) {
+    fun handleWitherExplosion(
+        entityTypeName: String,
+        blocks: MutableList<Block>,
+    ) {
         val isWitherRelated =
             entityTypeName == "WITHER" || entityTypeName == "WITHER_SKULL"
         if (!isWitherRelated) {

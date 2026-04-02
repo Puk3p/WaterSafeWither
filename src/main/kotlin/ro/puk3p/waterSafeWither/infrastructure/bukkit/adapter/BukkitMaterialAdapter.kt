@@ -4,7 +4,6 @@ import org.bukkit.Material
 import org.bukkit.block.Block
 
 class BukkitMaterialAdapter {
-
     fun isWater(block: Block): Boolean {
         val t = block.type
         return t == Material.WATER || t == Material.STATIONARY_WATER

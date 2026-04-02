@@ -11,7 +11,7 @@ import ro.puk3p.waterSafeWither.infrastructure.bukkit.adapter.BukkitMaterialAdap
 
 class SpawnerDropService(
     private var config: PluginConfig,
-    private val materials: BukkitMaterialAdapter
+    private val materials: BukkitMaterialAdapter,
 ) {
     fun updateConfig(newConfig: PluginConfig) {
         config = newConfig

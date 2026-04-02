@@ -7,7 +7,7 @@ import ro.puk3p.waterSafeWither.domain.policy.WaterBlockPolicy
 
 class WaterFlowPreventionService(
     private var config: PluginConfig,
-    private val waterPolicy: WaterBlockPolicy
+    private val waterPolicy: WaterBlockPolicy,
 ) {
     fun updateConfig(newConfig: PluginConfig) {
         config = newConfig

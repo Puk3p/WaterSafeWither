@@ -1,0 +1,16 @@
+# Build
+target/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Duplicate folders
+src 2/

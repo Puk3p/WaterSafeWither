@@ -6,9 +6,8 @@ import org.bukkit.event.block.BlockFromToEvent
 import ro.puk3p.waterSafeWither.application.service.WaterFlowPreventionService
 
 class WaterFlowListener(
-    private val service: WaterFlowPreventionService
+    private val service: WaterFlowPreventionService,
 ) : Listener {
-
     @EventHandler(ignoreCancelled = true)
     fun onWaterFlow(event: BlockFromToEvent) {
         val block = event.block

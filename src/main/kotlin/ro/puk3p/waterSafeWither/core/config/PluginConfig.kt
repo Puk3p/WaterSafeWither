@@ -10,7 +10,7 @@ data class PluginConfig(
     val spawnerFloatUp: Boolean,
     val floatVelocityY: Double,
     val witherFlowRadius: Double,
-    val spawnerDropChance: Double
+    val spawnerDropChance: Double,
 ) {
     companion object {
         fun load(plugin: Plugin): PluginConfig {
@@ -25,7 +25,7 @@ data class PluginConfig(
                 spawnerFloatUp = c.getBoolean("features.spawner-float-up", true),
                 floatVelocityY = c.getDouble("tuning.spawner-float-velocity-y", 0.35),
                 witherFlowRadius = c.getDouble("tuning.wither-flow-radius", 20.0),
-                spawnerDropChance = c.getDouble("tuning.spawner-drop-chance", 0.5)
+                spawnerDropChance = c.getDouble("tuning.spawner-drop-chance", 0.5),
             )
         }
     }

@@ -9,13 +9,16 @@ class WitherBlockBreakService(
     private var config: PluginConfig,
     private val waterPolicy: WaterBlockPolicy,
     private val materials: BukkitMaterialAdapter,
-    private val spawnerDropService: SpawnerDropService
+    private val spawnerDropService: SpawnerDropService,
 ) {
     fun updateConfig(newConfig: PluginConfig) {
         config = newConfig
     }
 
-    fun handleBlockBreak(entityTypeName: String, block: Block): Boolean {
+    fun handleBlockBreak(
+        entityTypeName: String,
+        block: Block,
+    ): Boolean {
         if (entityTypeName != "WITHER") {
             return false
         }

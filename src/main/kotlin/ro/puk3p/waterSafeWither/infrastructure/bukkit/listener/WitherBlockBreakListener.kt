@@ -6,9 +6,8 @@ import org.bukkit.event.entity.EntityChangeBlockEvent
 import ro.puk3p.waterSafeWither.application.service.WitherBlockBreakService
 
 class WitherBlockBreakListener(
-    private val service: WitherBlockBreakService
+    private val service: WitherBlockBreakService,
 ) : Listener {
-
     @EventHandler(ignoreCancelled = true)
     fun onEntityChangeBlock(event: EntityChangeBlockEvent) {
         val entity = event.entity ?: return

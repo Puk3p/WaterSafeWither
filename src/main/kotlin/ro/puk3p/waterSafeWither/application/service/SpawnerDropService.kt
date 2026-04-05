@@ -28,16 +28,16 @@ class SpawnerDropService(
             return
         }
 
+        val spawnerState = block.state as? CreatureSpawner
+        val spawnedType = spawnerState?.spawnedType
         val loc = block.location
+
+        block.type = Material.AIR
+
         val roll = Math.random()
         if (roll >= config.spawnerDropChance) {
             return
         }
-
-        val spawnerState = block.state as? CreatureSpawner
-        val spawnedType = spawnerState?.spawnedType
-
-        block.type = Material.AIR
 
         val drop = ItemStack(Material.MOB_SPAWNER, 1)
 

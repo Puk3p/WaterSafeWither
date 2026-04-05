@@ -6,7 +6,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerFishEvent
 
 class WitherFishingRodListener : Listener {
-
     @EventHandler(ignoreCancelled = true)
     fun onPlayerFish(event: PlayerFishEvent) {
         val caught = event.caught ?: return

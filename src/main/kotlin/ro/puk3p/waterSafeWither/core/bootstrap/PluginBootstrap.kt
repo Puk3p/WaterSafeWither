@@ -11,6 +11,7 @@ import ro.puk3p.waterSafeWither.infrastructure.bukkit.adapter.BukkitMaterialAdap
 import ro.puk3p.waterSafeWither.infrastructure.bukkit.listener.WaterFlowListener
 import ro.puk3p.waterSafeWither.infrastructure.bukkit.listener.WitherBlockBreakListener
 import ro.puk3p.waterSafeWither.infrastructure.bukkit.listener.WitherExplodeListener
+import ro.puk3p.waterSafeWither.infrastructure.bukkit.listener.WitherFishingRodListener
 import ro.puk3p.waterSafeWither.util.logInfo
 
 class PluginBootstrap(private val plugin: Plugin) {
@@ -36,6 +37,7 @@ class PluginBootstrap(private val plugin: Plugin) {
         pm.registerEvents(WitherBlockBreakListener(witherBlockBreakService), plugin)
         pm.registerEvents(WitherExplodeListener(witherExplosionService), plugin)
         pm.registerEvents(WaterFlowListener(waterFlowService), plugin)
+        pm.registerEvents(WitherFishingRodListener(), plugin)
 
         plugin.logInfo(
             "Started. preventWaterBreak=${config.preventWaterBreak}, " +
